@@ -1,0 +1,12 @@
+#inherit_from:
+#  - .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+(Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/MutableConstant:
+  Enabled: false
+Style/StringLiterals:
+  Enabled: false

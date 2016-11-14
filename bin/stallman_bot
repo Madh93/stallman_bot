@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'stallman_bot'
+
+puts "StallmanBot saying 'Hello World!' from #{StallmanBot::VERSION} version."
