@@ -1,3 +1,4 @@
+# Ruby Gem
 /Gemfile.lock
 /.bundle/
 /.yardoc
@@ -11,3 +12,7 @@
 /build/
 *.gem
 *.rbc
+
+# Telegram Bot
+TOKEN
+config/bot.yaml

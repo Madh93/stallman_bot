@@ -1,0 +1,8 @@
+token: token
+locales: ./config/locales/*.yml
+
+development:
+  debug: true
+
+production:
+  debug: false
