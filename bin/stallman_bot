@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'stallman_bot'
+require 'stallman_bot/arg_parser'
 
-puts "StallmanBot saying 'Hello World!' from #{StallmanBot::VERSION} version."
+args = StallmanBot::ArgParser.parse(ARGV)
+
+StallmanBot::StallmanBot.new do |bot|
+  bot.debug = args[:debug]
+  bot.token = args[:token]
+end.run
