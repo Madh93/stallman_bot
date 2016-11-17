@@ -22,7 +22,7 @@ module StallmanBot
 
   def self.configurate_with(file)
     begin
-      config = YAML.load_file(file)
+      config = YAML.load_file(file ||= 'bot.yaml')
     rescue Errno::ENOENT
       puts 'YAML configuration file couldn\'t be found. Using defaults.'
       return
@@ -30,6 +30,7 @@ module StallmanBot
       puts 'YAML configuration file contains invalid syntax. Using defaults'
       return
     end
+    @config[:file] = file
     configurate(config)
   end
 end

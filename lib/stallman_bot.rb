@@ -6,7 +6,7 @@ module StallmanBot
     attr_accessor :debug, :token
 
     def initialize(opts = {})
-      if opts[:file]
+      if opts[:file] || opts.empty?
         ::StallmanBot.configurate_with(opts[:file])
       else
         ::StallmanBot.configurate(opts)
