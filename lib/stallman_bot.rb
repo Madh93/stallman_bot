@@ -1,20 +1,20 @@
 require 'stallman_bot/version'
+require 'stallman_bot/config'
 
 module StallmanBot
   class StallmanBot
     attr_accessor :debug, :token
 
-    def initialize(opt = {})
-      if block_given?
-        yield self
+    def initialize(opts = {})
+      if opts[:file]
+        ::StallmanBot.configurate_with(opts[:file])
       else
-        @debug = opt[:debug]
-        @token = opt[:token]
+        ::StallmanBot.configurate(opts)
       end
     end
 
     def run
-      puts "bot corriendo"
+      puts 'bot running...'
     end
   end
 end

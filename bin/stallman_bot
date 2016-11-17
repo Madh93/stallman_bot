@@ -5,7 +5,5 @@ require 'stallman_bot/arg_parser'
 
 args = StallmanBot::ArgParser.parse(ARGV)
 
-StallmanBot::StallmanBot.new do |bot|
-  bot.debug = args[:debug]
-  bot.token = args[:token]
-end.run
+bot = StallmanBot::StallmanBot.new(args)
+bot.run

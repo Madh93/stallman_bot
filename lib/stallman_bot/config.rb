@@ -1,10 +1,13 @@
 require 'yaml'
 
 module StallmanBot
-  attr_reader :config, :valid_config_keys
+  class << self
+    attr_reader :config, :valid_config_keys
+  end
 
   @config = {
     debug: false,
+    file: '',
     token: '',
     locale: 'en'
   }
@@ -19,7 +22,7 @@ module StallmanBot
 
   def self.configurate_with(file)
     begin
-      config = YAML.load(file)
+      config = YAML.load_file(file)
     rescue Errno::ENOENT
       puts 'YAML configuration file couldn\'t be found. Using defaults.'
       return

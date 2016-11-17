@@ -3,11 +3,15 @@ require 'optparse'
 module StallmanBot
   class ArgParser
     def self.parse(argv)
-      options = Struct.new(:debug, :token)
-      args = options.new(false)
+      options = Struct.new(*::StallmanBot.valid_config_keys)
+      args = options.new
 
       opt_parser = OptionParser.new do |opts|
         opts.banner = 'Usage: stallman_bot [options]'
+
+        opts.on('-c', '--config FILE', 'YAML configuration bot') do |f|
+          args.file = f
+        end
 
         opts.on('-d', '--debug', 'Enable debug mode') do
           args.debug = true
@@ -30,7 +34,7 @@ module StallmanBot
       end
 
       opt_parser.parse!(argv)
-      args
+      args.to_h.reject { |_, v| v.nil? }
     end
   end
 end
