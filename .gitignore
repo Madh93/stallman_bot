@@ -15,4 +15,4 @@
 
 # Telegram Bot
 TOKEN
-config/bot.yaml
+bot.yaml
