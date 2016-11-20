@@ -1,9 +1,11 @@
 require 'optparse'
 
+require 'stallman_bot/configuration'
+
 module StallmanBot
   class ArgParser
     def self.parse(argv)
-      options = Struct.new(*::StallmanBot.valid_config_keys)
+      options = Struct.new(*::StallmanBot::Configuration.valid_config_keys)
       args = options.new
 
       opt_parser = OptionParser.new do |opts|

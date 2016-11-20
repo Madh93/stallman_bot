@@ -2,8 +2,14 @@
 
 require 'stallman_bot'
 require 'stallman_bot/arg_parser'
+require 'stallman_bot/bot'
 
+# Parse command-line arguments
 args = StallmanBot::ArgParser.parse(ARGV)
 
-bot = StallmanBot::StallmanBot.new(args)
+# Configure bot
+config = StallmanBot.configure(args)
+
+# Start bot
+bot = StallmanBot::Bot.new(config)
 bot.run
