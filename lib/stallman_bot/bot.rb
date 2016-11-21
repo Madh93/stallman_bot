@@ -1,16 +1,29 @@
 require 'telegram/bot'
 
+require 'stallman_bot/listener'
+
 module StallmanBot
   class Bot
     def initialize(config)
       @config = config
       @token = @config[:token]
-      # @listener = Listener.new
+      @debug = @config[:debug]
+      @listener = Listener.new
     end
 
     def run
-      abort("Invalid token: #{@token}") if invalid_token?
+      puts "Stallman_bot running... (DEBUG: #{@debug})"
+      if @debug
+        local_handler
+      elsif @token.empty?
+        puts "Invalid token: #{@token}"
+        exit
+      else
+        bot_handler
+      end
+    end
 
+    def bot_handler
       Telegram::Bot::Client.run(@token) do |bot|
         bot.listen do |message|
           begin
@@ -22,10 +35,17 @@ module StallmanBot
       end
     end
 
-    def invalid_token?
-      @token.empty?
+    def local_handler
+      loop do
+        begin
+          message = gets.chomp
+        rescue Interrupt
+          exit
+        end
+        @listener.listen(message)
+      end
     end
 
-    private :invalid_token?
+    private :bot_handler, :local_handler
   end
 end
