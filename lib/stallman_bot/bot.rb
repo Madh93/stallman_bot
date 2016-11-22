@@ -27,7 +27,7 @@ module StallmanBot
       Telegram::Bot::Client.run(@token) do |bot|
         bot.listen do |message|
           begin
-            puts "@listener: #{message}"
+            @listener.listen(message.text, bot, message.chat.id)
           rescue Telegram::Bot::Exceptions::ResponseError => e
             puts e
           end
