@@ -1,4 +1,6 @@
-# require 'stallman_bot/commands/start'
+require 'stallman_bot/commands/start'
+require 'stallman_bot/commands/status'
+require 'stallman_bot/commands/stop'
 
 module StallmanBot
   module Commands
@@ -8,11 +10,11 @@ module StallmanBot
       commands = {}
       files.each do |f|
         name = f[0..-4]
-        method = "Commands::#{name.capitalize}.run"
+        method = "StallmanBot::Commands::#{name.capitalize}"
         commands["/#{name}"] = method
         commands["/#{name}@RichardStallman_bot"] = method
       end
-      commands
+      commands.reject { |k, _| k.include? 'base' }
     end
 
     def self.all
