@@ -5,9 +5,9 @@ module StallmanBot
     class Status < Base
       def self.run(bot, id, listening = nil)
         if listening
-          super(bot, id, "I'm listening...")
+          super(bot, id, Locale.t('command.status.listening'))
         else
-          super(bot, id, "I'm trying to sleep...")
+          super(bot, id, Locale.t('command.status.sleeping'))
         end
         listening
       end

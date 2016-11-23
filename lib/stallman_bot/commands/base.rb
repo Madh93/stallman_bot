@@ -1,5 +1,3 @@
-require 'telegram/bot'
-
 module StallmanBot
   module Commands
     class Base

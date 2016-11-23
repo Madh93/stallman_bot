@@ -4,7 +4,7 @@ module StallmanBot
   module Commands
     class Stop < Base
       def self.run(bot, id, _listening = nil)
-        super(bot, id, "I'm going to sleep. See you!")
+        super(bot, id, Locale.t('command.stop'))
         false
       end
     end

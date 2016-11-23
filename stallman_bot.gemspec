@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/Madh93/stallman_bot"
   spec.license       = "MIT"
 
-  spec.files = Dir['lib/**/*.rb']
+  spec.files = Dir['lib/**/*.rb', 'config/locales/*.yml']
   spec.executables   = "stallman_bot"
   spec.require_paths = ["lib"]
 

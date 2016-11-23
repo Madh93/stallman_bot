@@ -4,7 +4,7 @@ module StallmanBot
   module Commands
     class Start < Base
       def self.run(bot, id, _listening = nil)
-        super(bot, id, "Hi, my name is Richard M. Stallman.")
+        super(bot, id, Locale.t('command.start'))
         true
       end
     end
