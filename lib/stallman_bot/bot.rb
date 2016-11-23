@@ -1,6 +1,7 @@
 require 'telegram/bot'
 
 require 'stallman_bot/listener'
+require 'stallman_bot/locale'
 
 module StallmanBot
   class Bot
@@ -8,6 +9,7 @@ module StallmanBot
       @config = config
       @token = @config[:token]
       @debug = @config[:debug]
+      Locale.load_i18n(@config[:locale])
       @listener = Listener.new
     end
 
@@ -16,7 +18,7 @@ module StallmanBot
       if @debug
         local_handler
       elsif @token.empty?
-        puts "Invalid token: #{@token}"
+        puts "Invalid/empty token: #{@token}"
         exit
       else
         bot_handler
@@ -27,7 +29,7 @@ module StallmanBot
       Telegram::Bot::Client.run(@token) do |bot|
         bot.listen do |message|
           begin
-            @listener.listen(message.text, bot, message.chat.id)
+            @listener.respond(message.text, bot, message.chat.id)
           rescue Telegram::Bot::Exceptions::ResponseError => e
             puts e
           end
@@ -42,7 +44,7 @@ module StallmanBot
         rescue Interrupt
           exit
         end
-        @listener.listen(message)
+        @listener.respond(message)
       end
     end
 
