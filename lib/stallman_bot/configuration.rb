@@ -9,6 +9,7 @@ module StallmanBot
     @config = {
       debug: false,
       file: '',
+      name: '',
       token: '',
       locale: 'en'
     }

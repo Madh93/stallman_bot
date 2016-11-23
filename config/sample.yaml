@@ -2,4 +2,6 @@ debug: false
 
 token: TOKEN
 
+name: name_bot
+
 locale: en

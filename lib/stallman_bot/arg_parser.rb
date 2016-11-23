@@ -19,6 +19,10 @@ module StallmanBot
           args.debug = true
         end
 
+        opts.on('-n', '--name NAME', 'Telegram bot name') do |n|
+          args.name = n
+        end
+
         opts.on('-t', '--token TOKEN', 'Telegram bot token') do |t|
           args.token = t
         end
@@ -30,7 +34,10 @@ module StallmanBot
 
         opts.on('-h', '--help', 'Print this help') do
           puts opts
-          puts 'Example: stallman_bot --token=8as7baub3ffasby3f2'
+          puts "\nExamples:"
+          puts "\t stallman_bot --name=cool_bot --token=8as7baub3ffasby32"
+          puts "\t stallman_bot --config=my_bot_config.yaml"
+          puts "\t stallman_bot \t# Find ./bot.yaml or load default config"
           exit
         end
       end

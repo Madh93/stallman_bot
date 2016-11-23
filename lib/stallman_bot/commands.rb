@@ -12,7 +12,7 @@ module StallmanBot
         name = f[0..-4]
         method = "StallmanBot::Commands::#{name.capitalize}"
         commands["/#{name}"] = method
-        commands["/#{name}@RichardStallman_bot"] = method
+        commands["/#{name}@#{StallmanBot.config[:name]}"] = method
       end
       commands.reject { |k, _| k.include? 'base' }
     end
