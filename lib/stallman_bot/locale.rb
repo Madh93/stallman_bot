@@ -20,8 +20,8 @@ module StallmanBot
     end
 
     def self.replies
-      I18n.t(:reply, I18n::MissingTranslationData).keys.map(&:to_s)
-    rescue I18n::MissingTranslationData
+      I18n.t(:reply, locale: I18n.default_locale).keys.map(&:to_s)
+    rescue NoMethodError
       I18n.t(:reply, locale: I18n.default_locale, default: missing('reply'))
     end
 

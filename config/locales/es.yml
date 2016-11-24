@@ -1,0 +1,10 @@
+---
+es:
+  command:
+    start: Hola, mi nombre es Richard M. Stallman.
+    stop: Me voy a dormir. ¡Nos vemos!
+    status:
+      listening: Estoy escuchando...
+      sleeping: Estoy intentando dormir...
+
+  reply:
