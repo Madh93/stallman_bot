@@ -6,11 +6,15 @@ A Richard Stallman bot for Telegram based on [Slack Hubot](https://github.com/in
 
 ## Installation
 
-Clone:
+Install gem:
+
+    gem install stallman_bot
+
+Or clone:
 
     git clone https://github.com/Madh93/stallman_bot && cd stallman_bot
 
-Install dependencies:
+And install dependencies:
 
     bundle
 And install stallman_bot:
