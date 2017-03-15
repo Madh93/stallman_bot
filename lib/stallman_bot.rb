@@ -6,8 +6,8 @@ module StallmanBot
   end
 
   def self.configure(opts = {})
-    @config ||= if opts[:config] || opts.empty?
-                  Configuration.configure_with(opts[:config])
+    @config ||= if opts[:file] || opts.empty?
+                  Configuration.configure_with(opts[:file])
                 else
                   Configuration.configure(opts)
                 end
